@@ -1,0 +1,24 @@
+1. not sure why but tuned model performs better than hand created model even when
+model is the same and has the same hyperparameters??? Perhaps it has a headstart with training???
+
+2. binary cross entropy is for when you classify into two groups
+ex: bike or not bike. as you have mulitple classes that are one hot encoded, 
+use categorical cross entropy instead. Didnt seem to make that big of a difference in your case, though.
+
+3. optimizer was changed to Adam which is better and used a scheduler to make a moving learning rate. 
+    made a pretty big improvement. like 2%???
+
+4. epochs go down to prevent overfitting. (also can make tweaks faster :relieved:)
+
+5. your model architecture is very... odd??? usually convolutional layers are followed directly by activation 
+    functions but you have none and skip directly to pooling, and only use an activation function after
+    all of the convolutional layers. I just assumed that the model was written normally and tweaked it 
+    assuming it was but if i want to get higher accuracy i will prolly have to create a new model and 
+    retweak everything again :sob: anyways, I was still able to get to 93% accuracy with 
+    this model which seems significantly higher than the 80% seen on the code in your github (though
+    it came as like 89% when i ran it for the first time i think???). 
+    edit: Idk if this was intentional or not but this very odd architecture has given me the highest
+    accuracy??? adding relu activations just tanks the accuracy and changing the values of things just
+    makes it worse???
+
+    using regular cosine works better than the restarting one but eh
